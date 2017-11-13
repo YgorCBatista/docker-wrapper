@@ -1,0 +1,19 @@
+#!/bin/bash
+
+ROOT_FOLDER=$PWD
+
+TEST_FOLDER=test
+
+pushd $TEST_FOLDER >/dev/null
+
+echo "# Running tests..."
+
+for test in *.test.sh; do
+
+    . $test
+
+done
+
+echo "# Finish!"
+
+popd >/dev/null
