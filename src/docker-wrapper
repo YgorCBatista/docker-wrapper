@@ -6,4 +6,15 @@ args="$@"
 image=$executable
 command=$executable
 
-docker run --rm $image:default $command "${args[@]}"
+name="${image^^}_VERSION"
+if [ ! -z ${!name} ]; then
+    tag=${!name}
+elif [ -f '.version' ]; then
+    . .version
+    tag=${!name}
+else
+    tag='default'
+fi
+
+
+docker run --rm --volume=$PWD:/app --workdir=/app $image:$tag $command "${args[@]}"

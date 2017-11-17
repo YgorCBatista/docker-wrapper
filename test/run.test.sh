@@ -19,6 +19,13 @@ echo "- [$?] container reveive single option (-v)"
 php -r "echo 'oh yeah!';" | grep "oh yeah!" >/dev/null
 echo "- [$?] container receive more complex options (-r)"
 
+pushd fixtures/app >/dev/null
+
+php index.php | grep "oh yeah" >/dev/null
+echo "- [$?] files was mapped correctly"
+
+popd >/dev/null
+
 # Teardown
 docker rmi php:default >/dev/null
 

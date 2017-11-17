@@ -13,9 +13,6 @@ echo "+ Validating arguments"
 php | grep "\-\-rm"  >/dev/null
 echo "- [$?] container will be removed (--rm)"
 
-php | grep "php:default" >/dev/null
-echo "- [$?] image tag is 'php:default'"
-
 php | grep -P " php\s*$" >/dev/null
 echo "- [$?] command is 'php'"
 
